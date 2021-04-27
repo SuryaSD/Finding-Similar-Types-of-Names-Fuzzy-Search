@@ -1,0 +1,28 @@
+Case1 : FirstName is exact same but LastName is similar type:
+
+select distinct ss.firstname,ss.lastname,sd.firstname,sd.lastname 
+from load as ss, load as sd 
+where ss.firstName=sd.firstName 
+           and 
+           SOUNDEX(ss.lastName)=SOUNDEX(sd.lastname)                                    
+           and
+           left(ss.lastname,2)=left(sd.lastname,2) 
+           and 
+           ss.lastName<>sd.lastName 
+
+
+
+
+
+Case2 : LastName is exact same but FirstName is similar type:
+
+
+select distinct ss.firstname,ss.lastname,sd.firstname,sd.lastname 
+from load as ss, load as sd 
+where ss. lastName =sd. lastName 
+           and 
+           SOUNDEX(ss.firstName)=SOUNDEX(sd. firstName)                                    
+           and
+           left(ss. firstName,2)=left(sd. firstName,2) 
+           and 
+           ss. firstName <>sd. firstName 
